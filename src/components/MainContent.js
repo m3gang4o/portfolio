@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { setCookie, getCookie, setInternalNavigation, isInternalNavigation, isFirstVisitInSession } from '../utils/cookies';
+import { setInternalNavigation, isInternalNavigation } from '../utils/cookies';
 
 const CustomPrevArrow = (props) => {
   const { className, style, onClick } = props;
