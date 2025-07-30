@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header'; 
+import './Feed.css';
 import { setInternalNavigation, isInternalNavigation } from '../utils/cookies';
 
 const Feed = () => {
