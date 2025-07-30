@@ -1,0 +1,250 @@
+/* Feed.css - Styles for the Works section with masonry grid layout */
+
+.feed-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.works-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: #000;
+}
+
+/* Masonry grid styles */
+.my-masonry-grid {
+  display: flex;
+  width: 100%;
+  margin-left: -20px; /* gutter size offset */
+}
+
+.my-masonry-grid_column {
+  padding-left: 20px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Project item styles */
+.project-item {
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.project-item:hover img {
+  transform: scale(1.03);
+}
+
+.project-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.project-item:hover .project-info {
+  transform: translateY(0);
+}
+
+.project-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.project-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+/* Loading container styles */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff;
+}
+
+#terminal {
+  width: 80%;
+  max-width: 600px;
+  background-color: #000;
+  color: #0f0;
+  padding: 20px;
+  border-radius: 5px;
+  font-family: monospace;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.command-line {
+  margin-bottom: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.command-line.visible {
+  opacity: 1;
+}
+
+.terminal-cursor-blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.project-detail-page .project-video-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.project-detail-page .project-video-player {
+  width: 100%;
+  max-width: 900px; /* Increased max-width for a larger video player */
+  height: auto;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.project-detail-page .project-info-grid {
+  /* No changes made here */
+}
+
+/* Styles for Articles Section */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.article-card {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.article-image {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-right: 15px;
+}
+
+.article-info h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+}
+
+.article-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Styles for Video Section */
+.project-video-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.project-video-player {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.project-detail-page .project-info-grid {
+  display: grid;
+}
+
+/* Styles for 'In the News' Section */
+.in-the-news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.in-the-news-card {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.in-the-news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.in-the-news-image {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-right: 15px;
+}
+
+.in-the-news-info h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+}
+
+.in-the-news-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .feed-container {
+    padding: 1rem;
+  }
+  
+  .works-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}

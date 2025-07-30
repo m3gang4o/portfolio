@@ -1,0 +1,228 @@
+/* AboutPage.css */
+
+.about-page-container {
+  /* Similar to other page containers if you have a standard one */
+  padding-top: 0; /* Header might cover part of it, adjust as needed */
+  color: var(--text-color, #000); /* Assuming you use CSS variables */
+  background-color: var(--bg-color, #fff);
+  min-height: 100vh;
+}
+
+.about-content {
+  max-width: 900px; /* Or your preferred content width */
+  margin: 0 auto;
+  padding: 40px 20px; /* Adjust padding as needed */
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Or your primary content font */
+}
+
+.about-hero {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 40px 0;
+  /* border-bottom: 1px solid var(--border-color, #eee); */
+}
+
+.about-title {
+  font-size: 3rem; /* Adjust as needed */
+  font-weight: bold; /* Or a lighter weight if preferred */
+  color: var(--text-color, #000);
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase; /* If you like the all-caps style */
+}
+
+.about-section {
+  margin-bottom: 50px;
+}
+
+.about-section-title {
+  font-size: 1.8rem; /* Adjust as needed */
+  font-weight: bold;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--text-color, #000); /* Accent line */
+  display: inline-block; /* So border only spans the text width */
+}
+
+.about-section p {
+  font-size: 1rem; /* Or 1.1rem for better readability */
+  line-height: 1.7;
+  margin-bottom: 20px;
+  color: var(--text-color-secondary, #333); /* Slightly lighter text for paragraphs */
+}
+
+.skills-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 30px;
+}
+
+.skill-area h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.skill-area p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-color-secondary, #444);
+}
+
+.contact-prompt {
+  text-align: center;
+  padding: 30px;
+  background-color: var(--bg-light-gray, #f9f9f9); /* Subtle background highlight */
+  border-radius: 8px; /* Optional rounded corners */
+  position: relative; /* Add this to make .bottom-left-video relative to this element */
+}
+
+.contact-prompt .about-section-title {
+  border-bottom: none; /* No border for this title if centered */
+  margin-bottom: 15px;
+}
+
+.inline-link {
+  color: var(--accent-color, #007bff); /* Use your site's accent color */
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.inline-link:hover {
+  text-decoration: none;
+}
+
+/* Ensure menu styles from App.css or other global styles apply correctly */
+/* If the menu in AboutPage.js is the same as Feed.js, it should pick up existing styles */
+.menu .menu-item.terminal-style.active {
+  /* Style for the active '$ man ABOUT' link */
+  font-weight: bold; /* Example: make it bold */
+  /* Or add a different background/color if you prefer */
+}
+
+/* Hero Section with Profile Image */
+.hero-content {
+  position: relative;
+  margin-bottom: -50px;  /* Changed from 60px to 20px */
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.hero-image {
+  position: absolute;
+  left: -200px;
+  top: 180px;
+  z-index: 10;
+}
+
+.profile-head {
+  width: 200px;
+  height: auto;
+  display: block;
+  /* Removed all border styling: border-radius, border, box-shadow */
+}
+
+.hero-text {
+  text-align: center;
+  flex: 1;
+}
+
+.hero-tiger {
+  position: absolute;
+  bottom: -1200px;
+  left: -350px;
+  z-index: 5;
+}
+
+.tiger-gif {
+  width: 400px;
+  height: auto;
+  border: none;
+  outline: none;
+  background: transparent;
+  display: block;
+}
+
+/* Skills Section with Image */
+.skills-with-image {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* Full Body Image - Positioned Absolutely to Left */
+.full-body-container {
+  position: absolute;
+  right: 10px;
+  top: 133%;
+  transform: translateY(-50%);
+  width: 250px;
+  z-index: 1;
+}
+
+.full-body-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Video Section */
+.about-video-section {
+  margin: 40px 0;
+  text-align: center;
+  background: transparent;
+}
+
+/* Bottom Left Video */
+.bottom-left-video {
+  position: absolute;
+  right: 20px;
+  top: 150px;
+  z-index: 10;
+}
+
+.person-video {
+  width: 300px;
+  height: auto;
+  border: none;
+  outline: none;
+  background: transparent;
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .profile-head {
+    width: 140px;  /* Changed from 100px to 140px */
+    height: auto;
+    display: block;
+    /* Removed all border styling: border-radius, border, box-shadow */
+  }
+  
+  .full-body-container {
+    display: none; /* Hide on mobile to avoid overlap */
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-head {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .hero-content {
+    gap: 15px;
+  }
+}
