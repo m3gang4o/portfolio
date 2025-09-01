@@ -49,7 +49,7 @@ const CustomNextArrow = (props) => {
 };
 
 const MainContent = ({ showMenu }) => {
- const [loading, setLoading] = useState(false);
+ const [loading, setLoading] = useState(true);
  const [commandIndex, setCommandIndex] = useState(0);
  const [charIndex, setCharIndex] = useState(0);
  const [activeQuote, setActiveQuote] = useState(0);
@@ -152,6 +152,13 @@ const MainContent = ({ showMenu }) => {
      subtitle: "A data-driven victory in fan engagement strategy.",
      videoCaption: "Slideshow presentation of our winning Milwaukee Bucks Hackathon strategy.",
      journeyText: "The competition kicked off with a business prompt and dataset release on February 10. By February 14, we submitted a 2-minute elevator pitch outlining our strategy. After being selected as finalists, we had three days—from February 25–28—to finalize our presentation for judges from the Bucks and Modine organizations.\n\nWe focused on creating a comprehensive fan lifecycle strategy that spanned the full user journey—from first-time fans to loyal season ticket holders. Key components included:\n- RFM analysis to rank fans by recency, frequency, and monetary value\n- A Markov Chain model to predict how fans transition between levels of engagement\n- A proposed fan experience redesign, integrating:\n  • Gamification with XP and badge tracking\n  • Tiered loyalty rewards\n  • Personalized messaging and churn prevention tools\n\nWe emphasized both immediate feasibility and long-term revenue impact, aligning our solution with the Bucks' business goals while offering an engaging fan experience.",
+     journeyImages: [
+       { src: "/media/old-dulce.png", caption: "Original Website" },
+       { src: "/media/old-dulce1.png", caption: "Original Website" },
+       { src: "/media/dulce-wireframes.png", caption: "Wireframes" },
+       { src: "/media/dulce-inspo.png", caption: "Inspiration" },
+       { src: "/media/dulce-styleguide.png", caption: "Style Guide" }
+     ],
      articles: [
        {
          title: "Bucks Host Hackathon Presented by Modine",
