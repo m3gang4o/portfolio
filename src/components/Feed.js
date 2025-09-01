@@ -10,11 +10,9 @@ const Feed = () => {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [lightboxImage, setLightboxImage] = useState(null); 
 
-  // Check if user should see the NYC video loading screen
   useEffect(() => {
     const hasSeenFeedPage = sessionStorage.getItem('hasSeenFeedPage');
     
-    // Show loading if user hasn't been to Feed page in this session
     if (hasSeenFeedPage === 'true') {
       setLoading(false);
       setLoadingProgress(100);
@@ -25,7 +23,6 @@ const Feed = () => {
     let progressTimer;
     
     if (loading) {
-      // Update loading progress
       progressTimer = setInterval(() => {
         setLoadingProgress(prev => {
           if (prev >= 100) {
@@ -34,14 +31,13 @@ const Feed = () => {
           }
           return prev + 1;
         });
-      }, 30); // Update every 30ms for smooth animation
+      }, 30); 
       
-      // Set timeout for the full video duration
       timer = setTimeout(() => {
         setLoading(false);
-        sessionStorage.setItem('hasSeenFeedPage', 'true'); // Mark that user has seen Feed page
-        setInternalNavigation(); // Mark that user is now navigating internally
-      }, 3000); // 3 seconds for the NYC video to play
+        sessionStorage.setItem('hasSeenFeedPage', 'true'); 
+        setInternalNavigation(); 
+      }, 3000); 
     }
     
     return () => {
@@ -55,19 +51,16 @@ const Feed = () => {
     document.body.style.overflow = isMenuOpen ? 'auto' : 'hidden';
   };
   
-  // New: Open lightbox with the clicked image
   const openLightbox = (imageSrc) => {
     setLightboxImage(imageSrc);
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden'; 
   };
 
-  // New: Close lightbox
   const closeLightbox = () => {
     setLightboxImage(null);
-    document.body.style.overflow = 'auto'; // Restore background scrolling
+    document.body.style.overflow = 'auto'; 
   };
 
-  // Project data for the feed with size variations
   const galleryItems = [
     {
       id: 'galleryItem1',
@@ -80,7 +73,7 @@ const Feed = () => {
     {
       id: 'galleryItem2',
       title: '',
-      image: '/media/brown.jpg',
+      image: '/media/brown.JPG',
       category: 'switzerland',
       link: '#',
       size: 'medium' 
@@ -88,7 +81,7 @@ const Feed = () => {
     {
       id: 'galleryItem3',
       title: 'mom!',
-      image: '/media/mom.JPG',
+      image: '/media/mom.jpg',
       category: '',
       link: '#',
       size: 'small' 
@@ -208,7 +201,7 @@ const Feed = () => {
     {
       id: 'galleryItem18',
       title: '',
-      image: '/media/peace.jpg',
+      image: '/media/peace.JPG',
       category: '',
       link: '#',
       size: 'medium' 
