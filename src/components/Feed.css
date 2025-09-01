@@ -1,5 +1,3 @@
-/* Feed.css - Styles for the Works section with masonry grid layout */
-
 .feed-container {
   padding: 2rem;
   max-width: 1400px;
@@ -13,19 +11,17 @@
   color: #000;
 }
 
-/* Masonry grid styles */
 .my-masonry-grid {
   display: flex;
   width: 100%;
-  margin-left: -20px; /* gutter size offset */
+  margin-left: -20px;
 }
 
 .my-masonry-grid_column {
-  padding-left: 20px; /* gutter size */
+  padding-left: 20px;
   background-clip: padding-box;
 }
 
-/* Project item styles */
 .project-item {
   margin-bottom: 20px;
   position: relative;
@@ -79,7 +75,56 @@
   color: #333;
 }
 
-/* Loading container styles */
+@media (max-width: 768px) {
+  .project-item:hover .project-info {
+    transform: translateY(100%);
+  }
+  
+  .project-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+  }
+  
+  .project-info {
+    position: static;
+    transform: none;
+    background: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    padding: 12px;
+    transition: none;
+  }
+  
+  .project-info h3 {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+  
+  .project-info p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-item {
+    margin-bottom: 20px;
+  }
+  
+  .project-info {
+    padding: 10px;
+  }
+  
+  .project-info h3 {
+    font-size: 0.85rem;
+  }
+  
+  .project-info p {
+    font-size: 0.75rem;
+  }
+}
+
 .loading-container {
   display: flex;
   justify-content: center;
@@ -125,17 +170,15 @@
 
 .project-detail-page .project-video-player {
   width: 100%;
-  max-width: 900px; /* Increased max-width for a larger video player */
+  max-width: 900px;
   height: auto;
   margin-top: 20px;
   border-radius: 8px;
 }
 
 .project-detail-page .project-info-grid {
-  /* No changes made here */
 }
 
-/* Styles for Articles Section */
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -177,7 +220,6 @@
   color: #666;
 }
 
-/* Styles for Video Section */
 .project-video-section {
   margin-top: 40px;
   text-align: center;
@@ -195,7 +237,6 @@
   display: grid;
 }
 
-/* Styles for 'In the News' Section */
 .in-the-news-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -237,7 +278,6 @@
   color: #666;
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
   .feed-container {
     padding: 1rem;

@@ -5,7 +5,6 @@ const Header = ({ isMenuOpen, toggleMenu }) => {
   const [currentTime, setCurrentTime] = useState('');
 
   useEffect(() => {
-    // Update time every second for the terminal-like header
     const timer = setInterval(() => {
       const now = new Date();
       setCurrentTime(now.toLocaleTimeString());
@@ -14,11 +13,10 @@ const Header = ({ isMenuOpen, toggleMenu }) => {
     return () => clearInterval(timer);
   }, []);
 
-  // Style for making the menu button clearly visible
   const menuButtonStyle = {
     background: 'none',
     border: 'none',
-    color: 'black', // Ensure black color for the menu button
+    color: 'black',
     fontSize: '24px',
     cursor: 'pointer',
     padding: '5px 10px',

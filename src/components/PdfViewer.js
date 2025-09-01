@@ -4,7 +4,6 @@ import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import './PdfViewer.css';
 
-// Set up the worker
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const PdfViewer = ({ file }) => {
@@ -13,7 +12,7 @@ const PdfViewer = ({ file }) => {
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
-    setPageNumber(1); // Reset to first page on new PDF load
+    setPageNumber(1);
   }
 
   function changePage(offset) {

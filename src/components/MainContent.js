@@ -49,7 +49,7 @@ const CustomNextArrow = (props) => {
 };
 
 const MainContent = ({ showMenu }) => {
- const [loading, setLoading] = useState(true);
+ const [loading, setLoading] = useState(false);
  const [commandIndex, setCommandIndex] = useState(0);
  const [charIndex, setCharIndex] = useState(0);
  const [activeQuote, setActiveQuote] = useState(0);
@@ -191,6 +191,13 @@ const MainContent = ({ showMenu }) => {
      overview: "We redesigned the Dulce Cafe website to provide a fresh, functional, and visually appealing online experience for customers. The new site improves usability, integrates food delivery platforms, and reflects the café's charm and personality. It retains the original color scheme while introducing new content photos, updated menus, and a mobile-friendly layout.\n\nBuilt collaboratively through 1893 Brand Studio, the redesign ensures easy updates, better social media integration, and room for future growth. The site helps Dulce connect with new and returning customers while strengthening its online presence.",
      challenge: "The original site lacked interactivity, visual appeal, and functionality. It also contained outdated content and lacked integration with modern delivery platforms, making it difficult for customers to engage with the brand online.",
      journeyText: "We kicked off the project with a client consultation to understand Dulce's goals and gather brand direction. The original site lacked interactivity, visual appeal, and functionality. It also contained outdated content and lacked integration with modern delivery platforms.\n\nInspired by modern food and beverage websites—particularly Spicy 9—we moved forward with a \"free-for-all\" design mindset. We researched competitors, crafted mood boards with style tiles (colors, fonts, and image inspiration), and aligned our design direction with Dulce's aesthetic and mission.\n\nAfter developing wireframes in Adobe XD, we created a beta site featuring:\n- Embedded Uber Eats and GrubHub buttons\n- Updated menu sections with easy editability\n- A simplified CMS for content management\n- Clean, updated graphics and photography\n- A responsive design for desktop and mobile\n\nFollowing beta testing and client training, we launched the full site with plans for further enhancements in SEO and branding.",
+     journeyImages: [
+       { src: "/media/old-dulce.png", caption: "Original Website" },
+       { src: "/media/old-dulce1.png", caption: "Original Website" },
+       { src: "/media/dulce-wireframes.png", caption: "Wireframes" },
+       { src: "/media/dulce-inspo.png", caption: "Inspiration" },
+       { src: "/media/dulce-styleguide.png", caption: "Style Guide" }
+     ],
      servicesList: ["UX/UI Design", "Web Development", "Content Strategy", "Client Communication", "Branding & Visual Identity", "CMS Implementation", "Mobile Optimization"],
      videos: [
        { videoSrc: "/media/dulce-home.mov", caption: "The home page showcases Dulce, an about section, featured specialities, and reviews." },
@@ -224,7 +231,7 @@ const MainContent = ({ showMenu }) => {
      video: "/videos/record.mp4",
      subtitle: "Inspired by GOAT & StockX, designed with a refined touch.",
      videoCaption: "Demo of ELAN's mobile interface in action.",
-     journeyText: "This project started as a classroom design prompt, where I was assigned Wireframe #2 to reinterpret into a high-fidelity prototype. I reimagined the structure with my own design language — emphasizing clarity, usability, and mobile responsiveness. Beyond aesthetics, ELAN is built on UX principles that prioritize intuitive flow, accessible navigation, and clean visual hierarchy. I also created reusable components and a modular layout system to ensure scalability. In the next iteration, I plan to animate key interactions and explore turning it into a working prototype using React or Lottie-enhanced transitions.",
+     journeyText: "This project started as a classroom design prompt, where I was assigned a wireframe to reinterpret into a high-fidelity prototype. I reimagined the structure with my own design language — emphasizing clarity, usability, and mobile responsiveness. Beyond aesthetics, ELAN is built on UX principles that prioritize intuitive flow, accessible navigation, and clean visual hierarchy. I also created reusable components and a modular layout system to ensure scalability. In the next iteration, I plan to animate key interactions and explore turning it into a working prototype using React or Lottie-enhanced transitions.",
      servicesList: [
        "UX/UI Design",
        "Mobile Interaction Design",
@@ -302,43 +309,38 @@ const MainContent = ({ showMenu }) => {
      const timer = setTimeout(() => {
        if (commandIndex < commands.length) {
          if (charIndex < commands[commandIndex].length) {
-           // Update the current command's typed text
            const newTypedCommands = [...typedCommands];
            newTypedCommands[commandIndex] = commands[commandIndex].substring(0, charIndex + 1);
            setTypedCommands(newTypedCommands);
            setCharIndex(charIndex + 1);
          } else {
-           // Move to the next command after a shorter delay
            setTimeout(() => {
              setCommandIndex(commandIndex + 1);
              setCharIndex(0);
-           }, 300); // Reduced delay between commands
+           }, 300); 
          }
        } else {
-         // All commands have been typed - shorter delay before showing content
          setTimeout(() => {
            setLoading(false);
            setShowArrow(true);
-         }, 500); // Reduced final delay
+         }, 500); 
        }
-     }, 40); // Faster typing speed
+     }, 40); 
     
      return () => clearTimeout(timer);
    }
  }, [loading, commandIndex, charIndex, commands, typedCommands]);
 
 
- // Quote rotation effect
  useEffect(() => {
    const quoteTimer = setInterval(() => {
      setActiveQuote((prevIndex) => (prevIndex + 1) % quotes.length);
-   }, 3000); // Change quote every 3 seconds
+   }, 3000); 
   
    return () => clearInterval(quoteTimer);
  }, [quotes.length]);
 
 
- // Intersection Observer for scroll animations
  useEffect(() => {
    const observerOptions = {
      root: null,
@@ -358,7 +360,6 @@ const MainContent = ({ showMenu }) => {
 
    const observer = new IntersectionObserver(handleIntersect, observerOptions);
   
-   // Observe project elements
    projectRefs.current.forEach(ref => {
      if (ref) observer.observe(ref);
    });
@@ -369,16 +370,12 @@ const MainContent = ({ showMenu }) => {
        if (ref) observer.unobserve(ref);
      });
    };
- }, [projects]); // Added projects to dependency array as projectRefs depends on it
+ }, [projects]); 
 
 
- // Check if user should see the loading screen
  useEffect(() => {
    const isInternal = isInternalNavigation();
    
-   // Show loading only if this is NOT internal navigation
-   // This means: show loading for all external entries (including returning visitors)
-   // Skip loading only for internal navigation within the site
    if (isInternal) {
      setLoading(false);
      setCommandIndex(commands.length);
@@ -386,44 +383,37 @@ const MainContent = ({ showMenu }) => {
    }
  }, []);
 
- // Set internal navigation flag after loading screen is finished
  useEffect(() => {
    if (!loading) {
-     setInternalNavigation(); // Mark that user is now navigating internally
+     setInternalNavigation(); 
    }
  }, [loading]);
-
- // Don't render content when menu is open
  if (showMenu) {
    return null;
  }
 
 
- // Handle project click to show detailed view
  const handleProjectClick = (project) => {
    setActiveProject(project);
    document.body.style.overflow = 'hidden';
  };
 
 
- // Close project detail view
  const closeProjectDetail = () => {
    setActiveProject(null);
    document.body.style.overflow = 'auto';
  };
 
 
- // New: Open lightbox with the clicked image
  const openLightbox = (imageSrc) => {
    setLightboxImage(imageSrc);
-   document.body.style.overflow = 'hidden'; // Prevent background scrolling
+   document.body.style.overflow = 'hidden'; 
  };
 
 
- // New: Close lightbox
  const closeLightbox = () => {
    setLightboxImage(null);
-   document.body.style.overflow = 'auto'; // Restore background scrolling
+   document.body.style.overflow = 'auto'; 
  };
 
 
@@ -449,7 +439,6 @@ const MainContent = ({ showMenu }) => {
        </div>
      ) : (
        <>
-         {/* Hero section with centered quotes */}
          <section className="content-section hero-section">
            <div className="quote-container">
              {quotes.map((quote, index) => (
@@ -467,21 +456,18 @@ const MainContent = ({ showMenu }) => {
              <span></span>
            </div>
           
-           {/* Add PopupManager */}
            <PopupManager />
          </section>
         
-         {/* Manifesto section */}
          <section className="content-section manifesto-section">
            <div className="manifesto-container">
-             <h2 className="manifesto-title">"MANIFESTO"</h2>
+             <h2 className="manifesto-title">"ABOUT"</h2>
              <p className="manifesto-text">
                hi, my name is megan gao, and welcome to my personal website. i'm an undergraduate at unc-chapel hill studying computer science and data science. i'm passionate about product design, data-driven strategy, and building thoughtful digital experiences through software and design. i'm currently exploring roles in product management, software engineering, data analytics, and ui/ux — and how emerging tech like ai can elevate user-centered products. thanks for stopping by — hope we can connect!
              </p>
            </div>
          </section>
         
-         {/* Experience/Skills/Resume Section */}
          <section className="content-section tabs-section">
            <div className="container">
              <div className="tabs-header">
@@ -539,9 +525,8 @@ const MainContent = ({ showMenu }) => {
            </div>
          </section>
         
-         {/* Projects Section - Redesigned with dynamic scrolling */}
          <section className="content-section projects-section">
-           <h2 className="section-title">"WORKS"</h2>
+           <h2 className="section-title">"PROJECTS"</h2>
           
            <div className="projects-container">
              {projects.map((project, index) => {
@@ -561,10 +546,9 @@ const MainContent = ({ showMenu }) => {
                      />
                      <div className="project-overlay" onClick={(e) => {
                        e.stopPropagation();
-                       if (!project.link) { // Only trigger modal if no link
+                       if (!project.links) { 
                           handleProjectClick(project);
                        }
-                       // If there's a link, the Link component will handle navigation
                      }}>
                        <span className="view-project">VIEW PROJECT</span>
                      </div>
@@ -616,14 +600,12 @@ const MainContent = ({ showMenu }) => {
                <div className="project-detail-content">
                  <button className="close-modal" onClick={closeProjectDetail}>×</button>
                 
-                 {/* Mimicking ElanProjectPage structure */}
                  <header className="project-header-modal">
                    <h1>{activeProject.title}</h1>
                    {activeProject.subtitle && <p className="project-subtitle-modal">{activeProject.subtitle}</p>}
                  </header>
 
 
-                 {/* Display project image if available and not the 'elan' project */}
                  {activeProject.image && activeProject.id !== 'elanProject' && (
                    <div className="project-detail-main-image-container">
                      <img
@@ -814,7 +796,6 @@ const MainContent = ({ showMenu }) => {
                  )}
 
 
-                 {/* Renders video-based screens */}
                  {activeProject.videos && activeProject.videos.length > 0 && (
                    <section className="project-screens-modal video-layout">
                      <h2>Screens</h2>
@@ -893,7 +874,6 @@ const MainContent = ({ showMenu }) => {
                              <span className="info-value">{Array.isArray(activeProject.services) ? activeProject.services.join(', ') : activeProject.services}</span>
                            </div>
                          )}
-                         {/* Optional: Role and Duration, if you want to keep them here */}
                          {activeProject.role && (
                            <div className="info-item">
                              <span className="info-label">Role</span>
@@ -932,7 +912,6 @@ const MainContent = ({ showMenu }) => {
            )}
 
 
-           {/* New: Simple Image Lightbox Modal */}
            {lightboxImage && (
              <div className="simple-lightbox-overlay" onClick={closeLightbox}>
                <div className="simple-lightbox-content" onClick={(e) => e.stopPropagation()}>

@@ -1,24 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import Header from './Header'; // Assuming you want the same header
-import './AboutPage.css'; // We'll create this for specific About page styles
+import './AboutPage.css';
 
-const AboutPage = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [pixelPosition, setPixelPosition] = useState({ x: 1100, y: 200 });
+const AboutPage = ({ isMenuOpen }) => {
+  const [pixelPosition, setPixelPosition] = useState({ x: 1060, y: 130 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [isDesktop, setIsDesktop] = useState(false);
   const pixelRef = useRef(null);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    document.body.style.overflow = isMenuOpen ? 'auto' : 'hidden';
-  };
 
   // Handle keyboard movement
   useEffect(() => {
     const handleKeyPress = (e) => {
-      const step = 10; // pixels to move per key press
+      const step = 10; 
       
       switch(e.key) {
         case 'ArrowUp':
@@ -44,6 +37,17 @@ const AboutPage = () => {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
+  }, []);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
   // Handle mouse drag
@@ -83,15 +87,6 @@ const AboutPage = () => {
 
   return (
     <div className="about-page-container">
-      <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-      
-      {/* Menu (similar to Feed.js or MainContent.js if you want it consistent) */}
-      <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
-        <Link to="/" className="menu-item terminal-style">$ cd /HOME</Link>
-        <Link to="/feed" className="menu-item terminal-style">$ open FEED.app</Link>
-        <Link to="/about" className="menu-item terminal-style active">$ man ABOUT</Link> {/* Mark as active */}
-      </div>
-
       <main className="about-content">
       <section className="about-hero">
           <div className="hero-content">
@@ -99,19 +94,38 @@ const AboutPage = () => {
               <img src="/media/cargos.png" alt="Megan Gao" className="profile-head" />
             </div>
             <div className="hero-text">
-              <h1 className="about-title">"PHILOSOPHY"</h1> 
-              {/* Or simply "ABOUT MEGAN GAO" */}
+              <h1 className="about-title">"ABOUT"</h1> 
             </div>
           </div>
         </section>
 
-        <section className="about-section">
+        <section className="about-section philosophy-section">
+          {isDesktop && !isMenuOpen && (
+            <img 
+              src="/media/pixel.png" 
+              alt="Pixel Character" 
+              className="pixel-character"
+              ref={pixelRef}
+              style={{
+                position: 'absolute',
+                left: pixelPosition.x,
+                top: pixelPosition.y,
+                cursor: isDragging ? 'grabbing' : 'grab',
+                zIndex: 1000,
+                width: '250px',
+                height: 'auto',
+                userSelect: 'none'
+              }}
+              onMouseDown={handleMouseDown}
+              draggable={false}
+            />
+          )}
           <h2 className="about-section-title">MY STORY</h2>
           <p>
-          Hi! I’m Megan Gao, a designer, developer, and problem-solver passionate about building thoughtful, impactful technology. My journey started with a love for visual storytelling and a fascination with how digital products work. That interest evolved into a deeper commitment to creating user-first experiences that are functional, beautiful, and data-informed.
+          Hi! I'm Megan Gao, a designer, developer, and problem-solver passionate about building thoughtful, impactful technology. My journey started with a love for visual storytelling and a fascination with how digital products work. That interest evolved into a deeper commitment to creating user-first experiences that are functional, beautiful, and data-informed.
           </p>
           <p>
-          At UNC-Chapel Hill, I’m studying Computer Science and Data Science, where I’ve gained hands-on experience across software engineering, product design, and analytics. I’m especially drawn to roles that combine technical execution with creativity and strategy. I’m currently exploring product management as a path where I can connect ideas, users, and teams. I also have a growing interest in how tools like AI can enhance product experiences when designed thoughtfully and ethically.
+          At UNC-Chapel Hill, I'm studying Computer Science and Data Science, where I've gained hands-on experience across software engineering, product design, and analytics. I'm especially drawn to roles that combine technical execution with creativity and strategy. I'm currently exploring product management as a path where I can connect ideas, users, and teams. I also have a growing interest in how tools like AI can enhance product experiences when designed thoughtfully and ethically.
           </p>
         </section>
 
@@ -132,7 +146,7 @@ const AboutPage = () => {
             </div>
             <div className="skill-area">
               <h3>03. CROSS-FUNCTIONAL PRODUCT THINKING</h3>
-              <p>I work across disciplines to bring ideas to life, from user research and feature planning to testing and iteration. I thrive in collaborative environments where design, engineering, and strategy come together to build meaningful products. I’m excited by emerging technologies, including AI, and how they can be integrated in a way that enhances functionality and user experience.</p>
+              <p>I work across disciplines to bring ideas to life, from user research and feature planning to testing and iteration. I thrive in collaborative environments where design, engineering, and strategy come together to build meaningful products. I'm excited by emerging technologies, including AI, and how they can be integrated in a way that enhances functionality and user experience.</p>
             </div>
           </div>
           <div className="full-body-container">
@@ -140,28 +154,96 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <div className="interactive-pixel-character">
-          {!isMenuOpen && (
-            <img 
-              src="/media/pixel.png" 
-              alt="Pixel Character" 
-              className="pixel-character"
-              ref={pixelRef}
-              style={{
-                position: 'absolute',
-                left: pixelPosition.x,
-                top: pixelPosition.y,
-                cursor: isDragging ? 'grabbing' : 'grab',
-                zIndex: 1000,
-                width: '250px',
-                height: 'auto',
-                userSelect: 'none'
-              }}
-              onMouseDown={handleMouseDown}
-              draggable={false}
-            />
-          )}
-        </div>
+        <section className="about-section">
+          <h2 className="about-section-title">COURSEWORK</h2>
+          <p className="classes-intro">
+            Core Computer Science and Data Science classes I have taken at UNC-Chapel Hill.
+          </p>
+          
+          <div className="classes-container">
+            <div className="class-category">
+              <h3 className="category-title">Core Computer Science</h3>
+              <div className="class-grid">
+                <div className="class-row">
+                  <span className="class-code">COMP 110</span>
+                  <span className="class-name">Introduction to Programming</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">COMP 210</span>
+                  <span className="class-name">Data Structures and Analysis</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">COMP 211</span>
+                  <span className="class-name">Systems Fundamentals</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">COMP 301</span>
+                  <span className="class-name">Foundations of Programming</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">COMP 311</span>
+                  <span className="class-name">Computer Organization</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">COMP 426</span>
+                  <span className="class-name">Modern Web Programming</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">COMP 455</span>
+                  <span className="class-name">Models of Languages and Computation</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">COMP 550</span>
+                  <span className="class-name">Algorithms and Analysis</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="class-category">
+              <h3 className="category-title">Mathematics & Statistics</h3>
+              <div className="class-grid">
+                <div className="class-row">
+                  <span className="class-code">MATH 231</span>
+                  <span className="class-name">Calculus of Functions of One Variable I</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">MATH 232</span>
+                  <span className="class-name">Calculus of Functions of One Variable II</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">MATH 233</span>
+                  <span className="class-name">Calculus of Functions of Several Variables</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">MATH 347</span>
+                  <span className="class-name">Linear Algebra for Applications</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">MATH 381</span>
+                  <span className="class-name">Discrete Mathematics</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">STOR 435</span>
+                  <span className="class-name">Introduction to Probability</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="class-category">
+              <h3 className="category-title">Data Science</h3>
+              <div className="class-grid">
+                <div className="class-row">
+                  <span className="class-code">DATA 110</span>
+                  <span className="class-name">Introduction to Data Science</span>
+                </div>
+                <div className="class-row">
+                  <span className="class-code">DATA 120</span>
+                  <span className="class-name">Ethics of AI and Societal Decision Making</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="about-section contact-prompt">
           <h2 className="about-section-title">LET'S CONNECT</h2>
@@ -171,7 +253,7 @@ const AboutPage = () => {
         </section>
       </main>
 
-      {/* Optional: A simple footer if needed */}
+      {/* A simple footer if needed */}
       {/* 
       <footer className="about-footer">
         <p>&copy; {new Date().getFullYear()} Megan Gao. All rights reserved.</p>

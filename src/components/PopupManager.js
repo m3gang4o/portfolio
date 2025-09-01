@@ -9,7 +9,7 @@ const sampleContent = [
     type: 'image',
     content: (
       <div className="popup-image-container">
-        <img src="/media/DSC08944 2.JPG" alt="Fashion" className="popup-image" />
+        <img src="/media/face.jpeg" alt="Fashion" className="popup-image" />
       </div>
     ),
     initialPosition: { x: 30, y: 160 }
@@ -20,7 +20,7 @@ const sampleContent = [
     type: 'image',
     content: (
       <div className="popup-image-container">
-        <img src="/media/IMG_0555 2.JPG" alt="Design" className="popup-image" />
+        <img src="/media/subway.jpeg" alt="Design" className="popup-image" />
       </div>
     ),
     initialPosition: { x: 1050, y: 130 }
@@ -45,7 +45,7 @@ const sampleContent = [
   }
 ];
 
-const PopupManager = () => {
+const PopupManager = ({ isMenuOpen }) => {
   const [popups, setPopups] = useState([]);
 
   useEffect(() => {
@@ -69,15 +69,16 @@ const PopupManager = () => {
 
   return (
     <div className="popup-area"> 
-      {popups.filter(p => p.isOpen).map(popup => (
+      {!isMenuOpen && popups.filter(p => p.isOpen).map(popup => (
         <PopupWindow
           key={popup.id}
           id={popup.id}
           title={popup.title}
-          content={popup.content}
           initialPosition={popup.position} 
           onClose={() => closePopup(popup.id)}
-        />
+        >
+          {popup.content}
+        </PopupWindow>
       ))}
     </div>
   );

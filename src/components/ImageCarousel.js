@@ -4,7 +4,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const ImageCarousel = () => {
-  // Sample image data - in a real app, you might fetch these from an API
   const images = [
     {
       id: 1,
@@ -33,7 +32,6 @@ const ImageCarousel = () => {
     }
   ];
 
-  // Slick carousel settings
   const settings = {
     dots: false,
     infinite: true,

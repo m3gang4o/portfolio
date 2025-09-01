@@ -7,6 +7,15 @@ import MainContent from './components/MainContent';
 import Feed from './components/Feed';
 import AboutPage from './components/AboutPage';
 
+const resizeObserverErrorHandler = (e) => {
+  if (e.message === 'ResizeObserver loop completed with undelivered notifications.') {
+    return;
+  }
+  console.error(e);
+};
+
+window.addEventListener('error', resizeObserverErrorHandler);
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -183,11 +192,16 @@ function App() {
     <Router>
       <Routes>
         <Route path="/feed" element={<Feed />} />
-        <Route path="/about" element={<AboutPage />} />
+        <Route path="/about" element={
+          <div className={`app ${isMenuOpen ? 'menu-open' : ''}`}>
+            <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+            <AboutPage isMenuOpen={isMenuOpen} />
+          </div>
+        } />
         <Route path="/*" element={
           <div className={`app ${isMenuOpen ? 'menu-open' : ''}`}>
             <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-            <MainContent projects={projects} />
+            <MainContent showMenu={isMenuOpen} />
             <Footer />
           </div>
         } />

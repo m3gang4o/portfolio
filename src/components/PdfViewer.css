@@ -33,3 +33,66 @@
 .pdf-nav span {
   font-size: 14px;
 }
+
+@media (max-width: 768px) {
+  .pdf-carousel-container {
+    width: 100% !important;
+    margin: 0 !important;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    min-height: auto !important;
+    max-height: none !important;
+  }
+  
+  .pdf-carousel .slick-slide > div {
+    min-height: 300px !important;
+    max-height: 350px !important;
+    height: 300px !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: transparent !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdf-carousel .slick-slide > div {
+    min-height: 60vh !important;
+    max-height: 70vh !important;
+    padding: 8px;
+  }
+  
+  .pdf-page {
+    max-height: 65vh !important;
+  }
+  
+  .pdf-carousel .slick-prev,
+  .pdf-carousel .slick-next {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .pdf-carousel .slick-prev:before,
+  .pdf-carousel .slick-next:before {
+    font-size: 18px;
+  }
+  
+  .pdf-carousel .slick-prev {
+    left: 8px;
+  }
+  
+  .pdf-carousel .slick-next {
+    right: 8px;
+  }
+  
+  .pdf-carousel .slick-dots {
+    bottom: 8px;
+  }
+  
+  .pdf-carousel .slick-dots li button:before {
+    font-size: 8px;
+  }
+}

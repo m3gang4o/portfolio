@@ -1,34 +1,31 @@
 /* AboutPage.css */
 
 .about-page-container {
-  /* Similar to other page containers if you have a standard one */
-  padding-top: 0; /* Header might cover part of it, adjust as needed */
-  color: var(--text-color, #000); /* Assuming you use CSS variables */
+  padding-top: 0;
+  color: var(--text-color, #000);
   background-color: var(--bg-color, #fff);
   min-height: 100vh;
 }
 
 .about-content {
-  max-width: 900px; /* Or your preferred content width */
+  max-width: 900px;
   margin: 0 auto;
-  padding: 40px 20px; /* Adjust padding as needed */
-  font-family: 'Helvetica Neue', Arial, sans-serif; /* Or your primary content font */
+  padding: 40px 20px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
 .about-hero {
   text-align: center;
   margin-bottom: 60px;
   padding: 40px 0;
-  /* border-bottom: 1px solid var(--border-color, #eee); */
 }
 
 .about-title {
-  font-size: 3rem; /* Adjust as needed */
-  font-weight: bold; /* Or a lighter weight if preferred */
+  font-size: 3rem;
   color: var(--text-color, #000);
   margin-bottom: 10px;
   letter-spacing: 0.05em;
-  text-transform: uppercase; /* If you like the all-caps style */
+  text-transform: uppercase;
 }
 
 .about-section {
@@ -36,19 +33,19 @@
 }
 
 .about-section-title {
-  font-size: 1.8rem; /* Adjust as needed */
+  font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 25px;
   padding-bottom: 10px;
-  border-bottom: 2px solid var(--text-color, #000); /* Accent line */
-  display: inline-block; /* So border only spans the text width */
+  border-bottom: 2px solid var(--text-color, #000);
+  display: inline-block;
 }
 
 .about-section p {
-  font-size: 1rem; /* Or 1.1rem for better readability */
+  font-size: 1rem;
   line-height: 1.7;
   margin-bottom: 20px;
-  color: var(--text-color-secondary, #333); /* Slightly lighter text for paragraphs */
+  color: var(--text-color-secondary, #333);
 }
 
 .skills-showcase {
@@ -74,18 +71,18 @@
 .contact-prompt {
   text-align: center;
   padding: 30px;
-  background-color: var(--bg-light-gray, #f9f9f9); /* Subtle background highlight */
-  border-radius: 8px; /* Optional rounded corners */
-  position: relative; /* Add this to make .bottom-left-video relative to this element */
+  background-color: var(--bg-light-gray, #f9f9f9);
+  border-radius: 8px;
+  position: relative;
 }
 
 .contact-prompt .about-section-title {
-  border-bottom: none; /* No border for this title if centered */
+  border-bottom: none;
   margin-bottom: 15px;
 }
 
 .inline-link {
-  color: var(--accent-color, #007bff); /* Use your site's accent color */
+  color: var(--accent-color, #007bff);
   text-decoration: underline;
   font-weight: bold;
 }
@@ -94,18 +91,14 @@
   text-decoration: none;
 }
 
-/* Ensure menu styles from App.css or other global styles apply correctly */
-/* If the menu in AboutPage.js is the same as Feed.js, it should pick up existing styles */
 .menu .menu-item.terminal-style.active {
-  /* Style for the active '$ man ABOUT' link */
-  font-weight: bold; /* Example: make it bold */
-  /* Or add a different background/color if you prefer */
+  font-weight: bold;
 }
 
 /* Hero Section with Profile Image */
 .hero-content {
   position: relative;
-  margin-bottom: -50px;  /* Changed from 60px to 20px */
+  margin-bottom: -50px;
   min-height: 150px;
   display: flex;
   align-items: center;
@@ -124,7 +117,6 @@
   width: 200px;
   height: auto;
   display: block;
-  /* Removed all border styling: border-radius, border, box-shadow */
 }
 
 .hero-text {
@@ -148,7 +140,6 @@
   display: block;
 }
 
-/* Skills Section with Image */
 .skills-with-image {
   display: flex;
   gap: 40px;
@@ -156,7 +147,6 @@
   position: relative;
 }
 
-/* Full Body Image - Positioned Absolutely to Left */
 .full-body-container {
   position: absolute;
   right: 10px;
@@ -196,6 +186,83 @@
   display: block;
 }
 
+/* Classes Section Styling */
+.classes-intro {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-color-secondary, #666);
+  font-style: italic;
+}
+
+.classes-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.class-category {
+  background: var(--bg-light-gray, #f8f9fa);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #e9ecef);
+}
+
+.class-category:last-child {
+  grid-column: 1 / -1;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.category-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+  color: var(--text-color, #333);
+  border-bottom: 2px solid #000;
+  padding-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.class-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.class-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem;
+  align-items: start;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.class-row:last-child {
+  border-bottom: none;
+}
+
+.class-code {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: #000;
+  min-width: 90px;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.class-name {
+  color: var(--text-color, #333);
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-content {
@@ -205,14 +272,46 @@
   }
   
   .profile-head {
-    width: 140px;  /* Changed from 100px to 140px */
+    width: 140px;
     height: auto;
     display: block;
-    /* Removed all border styling: border-radius, border, box-shadow */
   }
   
   .full-body-container {
-    display: none; /* Hide on mobile to avoid overlap */
+    display: none;
+  }
+  
+  /* Classes section mobile styles */
+  .classes-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .class-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    text-align: left;
+  }
+  
+  .class-row:hover {
+    margin: 0;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .class-code {
+    min-width: auto;
+    font-size: 0.85rem;
+  }
+  
+  .class-name {
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+  }
+  
+  .class-credits {
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
   }
 }
 
@@ -224,5 +323,13 @@
   
   .hero-content {
     gap: 15px;
+  }
+  
+  .class-category {
+    padding: 1.5rem;
+  }
+  
+  .category-title {
+    font-size: 1.1rem;
   }
 }

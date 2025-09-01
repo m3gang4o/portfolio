@@ -72,31 +72,31 @@ const Feed = () => {
     {
       id: 'galleryItem1',
       title: 'Blank Street Matcha!',
-      image: '/media/DSC08939 2.JPG',
+      image: '/media/blankstreet.JPG',
       category: 'yummy',
       link: '#',
       size: 'medium' 
     },
     {
       id: 'galleryItem2',
-      title: 'nyc',
-      image: '/media/DSC09337 2.jpg',
-      category: '',
+      title: '',
+      image: '/media/brown.jpg',
+      category: 'switzerland',
       link: '#',
       size: 'medium' 
     },
     {
       id: 'galleryItem3',
-      title: 'Panda? :)',
-      image: '/media/panda.JPG',
-      category: '?',
+      title: 'mom!',
+      image: '/media/mom.JPG',
+      category: '',
       link: '#',
       size: 'small' 
     },
     {
       id: 'galleryItem4',
-      title: 'BOOTS!',
-      image: '/media/smile.jpg',
+      title: '',
+      image: '/media/grass.jpg',
       category: '',
       link: '#',
       size: 'large' 
@@ -104,7 +104,7 @@ const Feed = () => {
     {
       id: 'galleryItem5',
       title: '',
-      image: '/media/beach.jpg',
+      image: '/media/water.jpg',
       category: '',
       link: '#',
       size: 'medium' 
@@ -119,16 +119,16 @@ const Feed = () => {
     },
     {
       id: 'galleryItem7',
-      title: 'matcha again',
-      image: '/media/matcha.jpg',
-      category: '',
+      title: '',
+      image: '/media/taiwan.jpg',
+      category: 'taiwan',
       link: '#',
       size: 'large' 
     },
     {
       id: 'galleryItem8',
-      title: 'subway',
-      image: '/media/DSC09442 2.jpg',
+      title: 'SAS!',
+      image: '/media/sas.jpg',
       category: '',
       link: '#',
       size: 'small' 
@@ -144,16 +144,16 @@ const Feed = () => {
     {
       id: 'galleryItem10',
       title: '',
-      image: '/media/rachel.jpg',
+      image: '/media/louvre.jpg',
       category: '',
       link: '#',
       size: 'large' 
     },
     {
       id: 'galleryItem11',
-      title: 'paris!',
+      title: '',
       image: '/media/idk.jpg',
-      category: '',
+      category: 'paris',
       link: '#',
       size: 'small' 
     },
@@ -167,11 +167,67 @@ const Feed = () => {
     },
     {
       id: 'galleryItem13',
-      title: '',
-      image: '/media/ian.jpg',
-      category: 'westside market :)',
+      title: 'matcha again',
+      image: '/media/matcha.jpg',
+      category: '',
       link: '#',
       size: 'large' 
+    },
+    {
+      id: 'galleryItem14',
+      title: '',
+      image: '/media/waterfall.jpg',
+      category: 'Upstate NY',
+      link: '#',
+      size: 'medium' 
+    },
+    {
+      id: 'galleryItem15',
+      title: 'SAS Interns Final Presentation Day!',
+      image: '/media/sasPres.jpg',
+      category: 'SAS Headquarters - Cary, NC',
+      link: '#',
+      size: 'medium' 
+    },
+    {
+      id: 'galleryItem16',
+      title: '',
+      image: '/media/cat.jpg',
+      category: '',
+      link: '#',
+      size: 'large' 
+    },
+    {
+      id: 'galleryItem17',
+      title: '',
+      image: '/media/bodega.jpg',
+      category: '',
+      link: '#',
+      size: 'large' 
+    },
+    {
+      id: 'galleryItem18',
+      title: '',
+      image: '/media/peace.jpg',
+      category: '',
+      link: '#',
+      size: 'medium' 
+    },
+    {
+      id: 'galleryItem19',
+      title: '',
+      image: '/media/nyc.jpg',
+      category: '',
+      link: '#',
+      size: 'small' 
+    }, 
+    {
+      id: 'galleryItem20',
+      title: '',
+      image: '/media/selfie.jpg',
+      category: '',
+      link: '#',
+      size: 'medium' 
     }
   ];
 
@@ -191,7 +247,6 @@ const Feed = () => {
           <div className="loading-overlay">
             <div className="loading-text">FEED.app</div>
           </div>
-          {/* Loading bar and text */}
           <div className="loading-text">LOADING NYC...</div>
           <div className="loading-bar-container">
             <div 
@@ -202,7 +257,6 @@ const Feed = () => {
         </div>
       ) : (
         <>
-          {/* Use the same Header component as the main page */}
           <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
 
           <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
@@ -217,7 +271,6 @@ const Feed = () => {
                 key={galleryItem.id} 
                 className={`feed-item feed-item-${galleryItem.size}`}
               >
-                {/* Removed the <a> tag wrapping the item if lightbox is the primary action */}
                 <div className="feed-item-image-container" onClick={() => openLightbox(galleryItem.image)} style={{cursor: 'pointer'}}>
                   {galleryItem.category && (
                     <div className={`feed-item-category ${galleryItem.category.toLowerCase().replace(' ', '-')}`}>
@@ -228,7 +281,6 @@ const Feed = () => {
                     src={galleryItem.image} 
                     alt={galleryItem.title} 
                     className="feed-item-image" 
-                    // onClick prop moved to parent div for larger click area, or keep here if preferred
                   />
                 </div>
                 <h3 className="feed-item-title">{galleryItem.title}</h3> 
@@ -236,7 +288,6 @@ const Feed = () => {
             ))}
           </div>
 
-          {/* New: Simple Image Lightbox Modal - uses same CSS classes as before */}
           {lightboxImage && (
             <div className="simple-lightbox-overlay" onClick={closeLightbox}>
               <div className="simple-lightbox-content" onClick={(e) => e.stopPropagation()}>
