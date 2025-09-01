@@ -105,7 +105,7 @@ const Feed = () => {
     {
       id: 'galleryItem6',
       title: '',
-      image: '/media/jack.jpg',
+      image: '/media/walk.jpg',
       category: '',
       link: '#',
       size: 'medium' 
