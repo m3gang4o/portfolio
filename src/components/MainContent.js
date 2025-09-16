@@ -90,24 +90,24 @@ const MainContent = ({ showMenu }) => {
 
  // Experience data
  const experiences = [
-   {
-     title: "WEB DESIGN INTERN",
-     company: "SAS",
-     date: "MAY 2025 - AUGUST 2025",
-     description: "Support UX and web design by applying user-centered design, conducting user tests, and building responsive web elements with HTML, CSS, and Figma. Assist corporate marketing through visual design and front-end development for SAS.com."
-   },
-   {
-     title: "WEB DEVELOPER & GRAPHIC DESIGNER",
-     company: "1893 BRAND STUDIOS",
-     date: "AUGUST 2024 - PRESENT",
-     description: "Design and develop websites and digital materials for local businesses using WordPress and Figma. Collaborate with clients on branding, logos, and collateral. Conduct market research to support customer growth and revenue."
-   },
-   {
-     title: "MEDIA CHAIR",
-     company: "CAROLINA AR/VR",
-     date: "AUGUST 2024 - PRESENT",
-     description: "Design and develop XR, VR, AR, and MR hardware projects (e.g., 3D printing, haptics, PCB/driver development). Lead client and in-house projects. Oversee visual/audio branding for a cohesive organizational identity."
-   }
+  {
+    title: "PRODUCT MANAGER",
+    company: "APP TEAM CAROLINA, CENTIBLE",
+    date: "AUGUST 2025 - PRESENT",
+    description: "Lead cross-functional team to ship new features for Centible, a fintech app helping students track expenses and build financial literacy. Define roadmap and launch strategies through user feedback, competitor analysis, and product analytics; scope features like categorization, notifications, and transaction history into clear user stories and wireframes. Drove agile cycles across design, dev, and QA to ship releases, tracking KPIs in retention, engagement, and adoption."
+  },
+  {
+    title: "WEB DESIGN INTERN",
+    company: "SAS",
+    date: "MAY 2025 - AUGUST 2025",
+    description: "Support UX and web design by applying user-centered design, conducting user tests, and building responsive web elements with HTML, CSS, and Figma. Assist corporate marketing through visual design and front-end development for SAS.com."
+  },
+  {
+    title: "OUTREACH COMMITTEE LEAD",
+    company: "GIRLS WHO CODE AT UNC-CH",
+    date: "JAN 2024 - PRESENT",
+    description: "Lead a team of 10+ UNC women in weekly development and maintenance of the GWC website using project management workflows; spearheaded redesign now used by 90+ current members and 600+ alumni. Manage onboarding and coordination of the Outreach team; oversee collaborations with UNC and community organizations. Previously completed the Bank of America–sponsored Summer Immersion Program; oversee annual outreach to 75+ students."
+  }
  ];
 
 

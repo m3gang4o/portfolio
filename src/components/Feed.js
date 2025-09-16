@@ -66,7 +66,7 @@ const Feed = () => {
       id: 'galleryItem1',
       title: 'Blank Street Matcha!',
       image: '/media/blankstreet.JPG',
-      category: 'yummy',
+      category: 'New York, NY',
       link: '#',
       size: 'medium' 
     },
@@ -192,7 +192,7 @@ const Feed = () => {
     },
     {
       id: 'galleryItem17',
-      title: '',
+      title: 'bodega cat',
       image: '/media/bodega.jpg',
       category: '',
       link: '#',
@@ -202,7 +202,7 @@ const Feed = () => {
       id: 'galleryItem18',
       title: '',
       image: '/media/peace.JPG',
-      category: '',
+      category: 'OBX',
       link: '#',
       size: 'medium' 
     },
@@ -218,7 +218,7 @@ const Feed = () => {
       id: 'galleryItem20',
       title: '',
       image: '/media/selfie.jpg',
-      category: '',
+      category: 'Chapel Hill, NC',
       link: '#',
       size: 'medium' 
     }
